@@ -1,30 +1,36 @@
 package pl.MGalecki10;
 
+import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
 public class ConsoleManager {
+    private static final String FILE_NAME = "vehicle_queue.txt";
+    private Queue<Vehicle> vehicleQueue = new LinkedList<>();
+    private FileIO fileIO = new FileIO();
+    private Scanner scanner = new Scanner(System.in);
 
-    int runConsole(Scanner scanner, Queue vehicleQueue, FileIO fileIO, String fileName) {
+    int runConsole(String fileName) {
+
         showConsoleOptions();
-        int option = handleConsoleMenu(scanner, vehicleQueue, fileIO, fileName);
-        return option;
+        handleConsoleMenu();
     }
 
     void showConsoleOptions() {
         System.out.println("What action do you want to take:");
-        System.out.println(Action.QUIT.getButton() + " - Quit");
-        System.out.println(Action.ADD_TO_QUEUE.getButton() + " - Add vehicle to queue");
-        System.out.println(Action.NEXT_REVIEW.getButton() + " - Serve next vehicle");
+        System.out.println(Action.QUIT.getValue() + " - Quit");
+        System.out.println(Action.ADD_TO_QUEUE.getValue() + " - Add vehicle to queue");
+        System.out.println(Action.NEXT_REVIEW.getValue() + " - Serve next vehicle");
         System.out.println("Enter option");
     }
 
-    int handleConsoleMenu(Scanner scanner, Queue vehicleQueue, FileIO fileIO, String fileName) {
+    void handleConsoleMenu() {
         int option = scanner.nextInt();
         scanner.nextLine();
+
         switch (option) {
             case 0:
-                fileIO.saveQueueToFile(vehicleQueue, fileName);
+                fileIO.saveQueueToFile(vehicleQueue, FILE_NAME);
                 break;
             case 1:
                 Vehicle newVehicle = readVehicleDataFromUser(scanner);
@@ -33,7 +39,7 @@ public class ConsoleManager {
             case 2:
                 if (vehicleQueue.isEmpty()) {
                     System.out.println("Queue is empty. Existing the application");
-                    fileIO.saveQueueToFile(vehicleQueue, fileName);
+                    fileIO.saveQueueToFile(vehicleQueue, FILE_NAME);
                     option = 0;
                 } else {
                     System.out.println("Vehicle to inspect:");

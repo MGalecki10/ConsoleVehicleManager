@@ -8,15 +8,8 @@ public class Main {
     private static final String FILE_NAME = "vehicle_queue.txt";
 
     public static void main(String[] args) {
-        Queue<Vehicle> vehicleQueue = new LinkedList<>();
         ConsoleManager consoleManager = new ConsoleManager();
-        FileIO fileIO = new FileIO();
-        Scanner scanner = new Scanner(System.in);
-        int option;
+        consoleManager.runConsole(FILE_NAME);
 
-        do {
-            option = consoleManager.runConsole(scanner, vehicleQueue, fileIO, FILE_NAME);
-        }
-        while(option != 0);
     }
 }
