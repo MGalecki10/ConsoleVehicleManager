@@ -10,8 +10,7 @@ public class ConsoleManager {
     private FileIO fileIO = new FileIO();
     private Scanner scanner = new Scanner(System.in);
 
-    int runConsole(String fileName) {
-
+    void runConsole() {
         showConsoleOptions();
         handleConsoleMenu();
     }
@@ -27,16 +26,16 @@ public class ConsoleManager {
     void handleConsoleMenu() {
         int option = scanner.nextInt();
         scanner.nextLine();
-
-        switch (option) {
-            case 0:
+        Action action = Action.values()[option];
+        switch (action) {
+            case QUIT:
                 fileIO.saveQueueToFile(vehicleQueue, FILE_NAME);
                 break;
-            case 1:
+            case ADD_TO_QUEUE:
                 Vehicle newVehicle = readVehicleDataFromUser(scanner);
                 vehicleQueue.add(newVehicle);
                 break;
-            case 2:
+            case NEXT_REVIEW:
                 if (vehicleQueue.isEmpty()) {
                     System.out.println("Queue is empty. Existing the application");
                     fileIO.saveQueueToFile(vehicleQueue, FILE_NAME);
@@ -47,7 +46,6 @@ public class ConsoleManager {
                     vehicleQueue.poll();
                 }
         }
-        return option;
     }
 
     Vehicle readVehicleDataFromUser(Scanner scanner) {
