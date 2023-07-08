@@ -5,13 +5,13 @@ public enum Action {
     ADD_TO_QUEUE(1),
     NEXT_REVIEW(2);
 
-    private final int button;
+    private final int value;
 
-    Action(int button) {
-        this.button = button;
+    Action(int value) {
+        this.value = value;
     }
 
-    public int getButton() {
-        return button;
+    public int getValue() {
+        return value;
     }
 }
