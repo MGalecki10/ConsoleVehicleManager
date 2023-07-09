@@ -1,14 +1,17 @@
 package pl.MGalecki10;
 
-import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
 public class ConsoleManager {
     private static final String FILE_NAME = "vehicle_queue.txt";
-    private Queue<Vehicle> vehicleQueue = new LinkedList<>();
+    private Queue<Vehicle> vehicleQueue;
     private FileIO fileIO = new FileIO();
     private Scanner scanner = new Scanner(System.in);
+
+    ConsoleManager() {
+        vehicleQueue = fileIO.loadQueueFromFile(FILE_NAME);
+    }
 
     void runConsole() {
         showConsoleOptions();
@@ -37,13 +40,11 @@ public class ConsoleManager {
                 break;
             case NEXT_REVIEW:
                 if (vehicleQueue.isEmpty()) {
-                    System.out.println("Queue is empty. Existing the application");
+                    System.out.println("Queue is empty. Exiting the application");
                     fileIO.saveQueueToFile(vehicleQueue, FILE_NAME);
-                    option = 0;
                 } else {
                     System.out.println("Vehicle to inspect:");
-                    System.out.println(vehicleQueue.peek());
-                    vehicleQueue.poll();
+                    System.out.println(vehicleQueue.poll());
                 }
         }
     }
