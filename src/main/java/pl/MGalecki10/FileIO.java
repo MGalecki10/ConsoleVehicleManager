@@ -7,6 +7,7 @@ import java.util.Queue;
 public class FileIO {
 
     public Queue<Vehicle> loadQueueFromFile(String fileName) {
+        Queue<Vehicle> vehicleQueue = new LinkedList<>();
         File file = new File(fileName);
         if (!file.exists()) {
             System.out.println("File not found. Creating a new file: " + fileName);
@@ -14,11 +15,12 @@ public class FileIO {
                 file.createNewFile();
             } catch (IOException e) {
                 System.out.println("Error creating a new file: " + fileName);
+            } catch (NullPointerException e) {
+                System.out.println("lalala");
             }
-            return null;
+            return vehicleQueue;
         }
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
-            Queue<Vehicle> vehicleQueue = new LinkedList<>();
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] vehicleData = line.split(",");
@@ -34,7 +36,7 @@ public class FileIO {
         } catch (IOException e) {
             System.out.println("Error loading data from file.");
         }
-        return null;
+        return vehicleQueue;
     }
 
     public void saveQueueToFile(Queue<Vehicle> vehicleQueue, String fileName) {
