@@ -1,4 +1,6 @@
-package pl.MGalecki10;
+package pl.MGalecki10.io;
+
+import pl.MGalecki10.model.Vehicle;
 
 import java.io.*;
 import java.util.LinkedList;

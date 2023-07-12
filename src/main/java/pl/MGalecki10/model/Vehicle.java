@@ -1,4 +1,4 @@
-package pl.MGalecki10;
+package pl.MGalecki10.model;
 
 public class Vehicle {
     private String type;

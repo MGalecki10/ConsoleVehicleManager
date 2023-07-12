@@ -1,4 +1,8 @@
-package pl.MGalecki10;
+package pl.MGalecki10.logic;
+
+import pl.MGalecki10.io.FileIO;
+import pl.MGalecki10.model.Vehicle;
+import pl.MGalecki10.model.Action;
 
 import java.util.Queue;
 import java.util.Scanner;
