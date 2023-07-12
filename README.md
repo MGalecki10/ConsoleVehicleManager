@@ -1,8 +1,8 @@
-## Console Vehicle Manager
+# Console Vehicle Manager
 
 This is a simple console-based vehicle management system implemented in Java. It allows you to add vehicles to a queue and serve them for review. The program saves the vehicle queue to a file and loads it back when the program starts.
 
-# Getting Started
+## Getting Started
 
 To run the program, follow these steps:
 
@@ -14,7 +14,7 @@ To run the program, follow these steps:
 5. Run the program with the following command:
 ```java Main```
 
-# Usage
+## Usage
 
 When you run the program, you will see a console menu with the following options:
 
@@ -22,17 +22,17 @@ When you run the program, you will see a console menu with the following options
 * Add vehicle to queue (1): Add a new vehicle to the queue. You will be prompted to enter the vehicle's details such as type, brand, model, year, mileage, and VIN number.
 * Serve next vehicle (2): Display the details of the next vehicle in the queue and remove it from the queue. If the queue is empty, a message will be shown.
 
-# File IO
+## File IO
 The program uses the **'FileIO'** class to load and save the vehicle queue to a file. The **'loadQueueFromFile'** method reads the data from the file and populates a **'Queue'** of **'Vehicle'** objects. The **'saveQueueToFile'** method writes the vehicle data from the queue to the file.
 
-# Vehicle Class
+## Vehicle Class
 The **'Vehicle'** class represents a vehicle object with properties such as type, brand, model, year, mileage, and VIN number. It provides getter and setter methods for accessing and modifying these properties. The **'toString'** method is overridden to provide a formatted string representation of the vehicle.
 
-# Enum: Action
+## Enum: Action
 The **'Action'** enum defines the different actions that can be performed in the console menu. Each action has a corresponding value that is displayed in the menu. The **'getValue'** method returns the value associated with an action.
 
-# ConsoleManager Class
+## ConsoleManager Class
 The **'ConsoleManager'** class is responsible for managing the console menu and handling user input. It uses an instance of **'FileIO'** to load and save the vehicle queue. The **'runConsole'** method displays the console menu and calls the **'handleConsoleMenu'** method to handle user input.
 
-# Contributing
+## Contributing
 Contributions to this project are welcome. You can fork the repository, make improvements, and submit a pull request.
