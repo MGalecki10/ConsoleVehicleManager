@@ -18,8 +18,11 @@ public class ConsoleManager {
     }
 
     void runConsole() {
-        showConsoleOptions();
-        handleConsoleMenu();
+        Action action;
+        do {
+            showConsoleOptions();
+            action = handleConsoleMenu();
+        } while (action != Action.QUIT);
     }
 
     void showConsoleOptions() {
@@ -30,7 +33,7 @@ public class ConsoleManager {
         System.out.println("Enter option");
     }
 
-    void handleConsoleMenu() {
+    Action handleConsoleMenu() {
         int option = scanner.nextInt();
         scanner.nextLine();
         Action action = Action.values()[option];
@@ -51,6 +54,7 @@ public class ConsoleManager {
                     System.out.println(vehicleQueue.poll());
                 }
         }
+        return action;
     }
 
     Vehicle readVehicleDataFromUser(Scanner scanner) {
