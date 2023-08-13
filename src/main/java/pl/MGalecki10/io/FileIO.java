@@ -25,7 +25,7 @@ public class FileIO {
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                String[] vehicleData = line.split(",");
+                String[] vehicleData = line.split(";");
                 String type = vehicleData[0];
                 String brand = vehicleData[1];
                 String model = vehicleData[2];
